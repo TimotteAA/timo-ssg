@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "CommonJS",
+    "target": "ESNext",
+    "rootDir": "src" /* Skip type checking all .d.ts files. */,
+    "esModuleInterop": true,
+    "jsx": "react-jsx"
+  }
+}
