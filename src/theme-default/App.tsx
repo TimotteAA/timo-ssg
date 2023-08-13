@@ -1,9 +1,9 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import Layout from "./Layout";
+import Layout from './Layout';
 
 const App: FC = () => {
-  return <Layout />;
+    return <Layout />;
 };
 
 export default App;
