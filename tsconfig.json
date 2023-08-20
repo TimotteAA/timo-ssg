@@ -1,11 +1,11 @@
 {
-  "compilerOptions": {
-    "outDir": "dist",
-    "module": "CommonJS",
-    "target": "ESNext",
-    "rootDir": "src" /* Skip type checking all .d.ts files. */,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "jsx": "react-jsx"
-  }
+    "compilerOptions": {
+        "outDir": "dist",
+        "module": "CommonJS",
+        "target": "ESNext",
+        "rootDir": "./" /* Skip type checking all .d.ts files. */,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "jsx": "react-jsx"
+    }
 }

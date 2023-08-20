@@ -2,12 +2,16 @@ import { InlineConfig, Rollup, build as viteBuild } from 'vite';
 import path, { join } from 'path';
 import fs from 'fs-extra';
 import { pathToFileURL } from 'url';
+import pluginReact from '@vitejs/plugin-react';
+
+import { pluginConfig } from './vite-plugin/config';
 
 import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from './constant';
+import { SiteConfig } from '../shared/types';
 
-export async function build(root: string = process.cwd()) {
+export async function build(root: string = process.cwd(), config: SiteConfig) {
     // 打包出来的源码
-    const [clientBundle] = await bundle(root);
+    const [clientBundle] = await bundle(root, config);
     const serverEntryPath = path.resolve(root, '.temp', 'ssr-entry.js');
     // import函数动态加载内容
     const { render } = await import(pathToFileURL(serverEntryPath).toString());
@@ -16,10 +20,14 @@ export async function build(root: string = process.cwd()) {
     await renderPage(render, root, clientBundle);
 }
 
-export async function bundle(root: string) {
+export async function bundle(root: string, config: SiteConfig) {
     const resolveViteConfig = (isServer: boolean): InlineConfig => ({
         mode: 'production',
         root,
+        ssr: {
+            noExternal: ['react-router-dom'],
+        },
+        plugins: [pluginReact(), pluginConfig(config)],
         build: {
             ssr: isServer ? true : false,
             assetsDir: isServer ? '' : 'asset',

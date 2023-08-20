@@ -1,15 +1,12 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
+import { Content } from '../../runtime/Content';
 
 const Layout: FC = () => {
-    const [count, setCount] = useState(0);
     return (
         <div>
             <h2>default layout component</h2>
-            <div>
-                {count}
-                <button onClick={() => setCount(count + 1)}>Add count by 1</button>
-                <div>FUck you</div>
-            </div>
+            <h3>Common compo</h3>
+            <Content />
         </div>
     );
 };

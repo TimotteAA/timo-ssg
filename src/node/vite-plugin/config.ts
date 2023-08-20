@@ -7,7 +7,7 @@ import { SiteConfig } from '../../shared/types';
  */
 const SITE_DATA_ID = 'timo:site-data';
 
-export function pluginConfig(config: SiteConfig, restartServer: () => Promise<void>): Plugin {
+export function pluginConfig(config: SiteConfig, restartServer?: () => Promise<void>): Plugin {
     return {
         name: 'timo-config',
         resolveId(source) {

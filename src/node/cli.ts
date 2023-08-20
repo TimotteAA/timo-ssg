@@ -2,6 +2,7 @@ import cac from 'cac';
 import path from 'path';
 
 import { build } from './build';
+import { resolveConfig } from './config';
 
 const cli = cac('timo');
 
@@ -32,7 +33,8 @@ cli.command('build [root]', 'build project')
     .action(async (root: string) => {
         try {
             root = path.resolve(root);
-            await build(root);
+            const config = await resolveConfig(root, 'build', 'production');
+            await build(root, config);
         } catch (err) {
             console.log(err);
         }

@@ -1,4 +1,5 @@
 import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom/server';
 import App from '../theme-default/App';
 
 /**
@@ -7,5 +8,9 @@ import App from '../theme-default/App';
  * @returns
  */
 export function render() {
-    return renderToString(<App />);
+    return renderToString(
+        <StaticRouter location={'/guide'}>
+            <App />
+        </StaticRouter>,
+    );
 }
